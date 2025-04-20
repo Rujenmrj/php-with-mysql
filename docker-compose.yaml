@@ -1,0 +1,45 @@
+version: '3.8'
+services: 
+  frontend:
+    container_name: frontend-test
+    image: nginx-with-fpm
+    ports:
+      - "82:80"
+    depends_on:
+      - backend
+      - php
+      - imageserver
+    volumes:
+      - ./frontend/:/var/www/html
+    restart: always
+
+  php:
+    container_name: php-fpm
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./frontend/:/var/www/html
+    restart: always
+  db:
+    container_name: db
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DATABASE: "mydatabase"
+    volumes:
+      - ./mysql:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    restart: always
+
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306 
+    depends_on:
+      - db
+    restart: always
+
