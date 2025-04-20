@@ -2,9 +2,9 @@ version: '3.8'
 services: 
   frontend:
     container_name: frontend-test
-    image: nginx-with-fpm
+    image: rujenmrj/nginx-w-fpm
     ports:
-      - "82:80"
+      - "80:80"
     depends_on:
       - backend
       - php
@@ -29,8 +29,6 @@ services:
       MYSQL_DATABASE: "mydatabase"
     volumes:
       - ./mysql:/var/lib/mysql
-    ports:
-      - "3306:3306"
     restart: always
 
   phpmyadmin:
@@ -38,7 +36,9 @@ services:
     image: phpmyadmin/phpmyadmin
     environment:
       PMA_HOST: db
-      PMA_PORT: 3306 
+      PMA_PORT: 3306
+      PMA_USER: "root"
+      PMA_PASSWORD: "root" 
     depends_on:
       - db
     restart: always

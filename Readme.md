@@ -27,7 +27,7 @@ It includes **PHP**, **Nginx**, **MySQL**, and **phpMyAdmin** — all containeri
 ### 2. 📥 Clone this repository
 
 ```bash
-git clone https://github.com/yourusername/php-with-mysql.git
+git clone https://github.com/rujenmrj/php-with-mysql.git
 cd php-with-mysql 
 ```
 
@@ -51,7 +51,7 @@ Service	URL
 
 | Service       | URL                         |
 | ------------- | --------------------------- |
-| Your Website	| http://localhost:8080       |
+| Your Website	| http://localhost/      |
 | phpMyAdmin	| http://localhost/phpmyadmin |
 
 ### 6. 🔁 Stopping the services
